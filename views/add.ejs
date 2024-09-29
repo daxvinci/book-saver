@@ -1,0 +1,63 @@
+<%- include('partials/header.ejs') %>
+
+<div class="px-4 text pt-1 pb-3 my-2 text-center">
+  <img class="d-block mx-auto mb-4" src="/images/search.svg" alt="" width="150" height="150">
+  <h1 class="display-5 fw-bold text-body-emphasis">Search for a Book</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">This page uses the Open Library Books API to let you
+       search a vast catalog of books.
+       Simply enter a query,
+        and relevant results will be pulled from Open Library’s database.</p>
+
+    <form action="/add" method="post">
+      <% if(locals.error){ %>
+      <input type="search" name="book_name" placeholder="<%= error %>" class="form-control mb-4" id="search">
+      <% }else{ %>
+      <input type="search" name="book_name" placeholder="search by book name....." class="form-control mb-4" id="search">
+      <% } %>
+      <button type="submit" class="btn btn-primary">Find Book</button>
+    </form>
+
+  </div>
+  <% if(locals.number){ %>
+    <h2 class="display-7 mt-3 fw-bold text-body-emphasis"><%= number %> <%= number > 1 ? 'Entries' : 'Entry' %> found</h2>
+    <% } %>
+</div>
+
+
+    <% if(locals.books && locals.books.length > 0 ){ %>
+    <div class="container">
+        <div class="row">
+          <% for(let i=0; i < books.length ; i++){ %>
+          <div class="col-md-6">
+            <div class="row g-0 cards border-none rounded overflow-hidden flex-md-row-reverse mb-4 shadow h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0"><%= books[i].title !== undefined ? books[i].title : 'N/A' %></h3>
+                <strong class="d-inline-block mb-2 text-primary-emphasis">
+                    Author: <%= books[i].author_name && books[i].author_name[0] !== undefined ? books[i].author_name[0] : 'N/A' %>
+                </strong>
+                <div class="mb-1 text-body-secondary">
+                    Publish year: <%=books[i].publish_year && books[i].publish_year[0] !== undefined ? books[i].publish_year[0] : 'N/A' %>
+                </div>
+                <p class="card-text mb-auto">Rating: <%= books[i].ratings_average != null ? books[i].ratings_average.toFixed(2) : 'N/A' %></p>
+
+                <form action="/form" method="get">
+                  <input type="text" name="book" value="<%= books[i].title !== undefined ? books[i].title : 'N/A' %>" hidden>
+                  <input type="text" name="author" value="<%= books[i].author_name && books[i].author_name[0] !== undefined ? books[i].author_name[0] : 'N/A' %>" hidden>
+                  <input type="text" name="year" value="<%=books[i].publish_year && books[i].publish_year[0] !== undefined ? books[i].publish_year[0] : 'N/A' %>" hidden>
+                  <input type="text" name="rating" value=" <%= books[i].ratings_average != null ? books[i].ratings_average.toFixed(2) : 'N/A' %>" hidden>
+                  <input type="text" name="isbn" value="<%= books[i].isbn && books[i].isbn[0] !== undefined ? books[i].isbn[0] : 'N/A' %>" hidden>
+                  <input type="submit" class="btn btn-primary" value="Add Book">
+                </form>
+              </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="https://covers.openlibrary.org/b/isbn/<%= books[i].isbn && books[i].isbn[0] !== undefined ? books[i].isbn[0] : '' %>-M.jpg" width="200" height="250" alt="image not available">
+          <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+        </div>
+      </div>
+    </div>
+    <% } %>
+        </div>
+    </div>
+    <% } %>
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,87 @@
+body{
+    background-color: #393896 !important;
+    font-family: "Irish Grover", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.cards{
+    background-color: #FFEFE0 !important;
+}
+.text{
+    color: #FFEFE0 !important;
+}
+.home{
+    color: #FFEFE0 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+.lily-script-one-regular {
+    font-family: "Lily Script One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+.irish-grover-regular {
+    font-family: "Irish Grover", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }  
+.front-page{
+    height: 470px;
+}
+.illustrations{
+    display: flex;
+    gap: 30px;
+    /* justify-content: space-between; */
+}
+.illustrations > .lady{
+    width: 100%;
+    max-width: 400px;
+}
+.illustrations > .robot{
+    width: 100%;
+    max-width: 190px;
+    align-self: flex-start;
+    position: absolute;
+    top: -10px;
+    right: 200px;
+}
+.btn-primary{
+    background-color: #817cff;
+    border-color: #817cff;
+}
+@media screen and (max-width: 877px) {
+    .illustrations > .robot{
+      width: 100%;
+      max-width: 200px;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .illustrations > .lady{
+        width: 100%;
+        max-width: 400px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .illustrations{
+        flex-direction: column;
+        gap: 0px;
+        align-items: center;
+    }
+    .illustrations > .lady{
+        width: 100%;
+        max-width: 260px;
+    }
+    .illustrations > .robot{
+        width: 100%;
+        max-width: 150px;
+        align-self: flex-start;
+    }
+  }
+  
+  
+  

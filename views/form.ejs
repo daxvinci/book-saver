@@ -1,0 +1,56 @@
+<%- include('partials/header.ejs') %>
+
+<% if(locals.addbook){ %>
+<div class="px-4 py-5 my-5 container">
+    <form action="/form" method="post">
+        <div class="row g-3">
+            <input type="hidden" name="isbn" value="<%= addbook.isbn %>">
+
+          <div class="col-12">
+            <label for="book" class="form-label text">Book</label>
+            <input type="text" name="book" class="form-control bg-body-tertiary text-body-tertiary" value="<%= addbook.book %>" readonly>
+          </div>
+
+          <div class="col-12">
+            <label for="author" class="form-label text">Author:</label>
+            <input type="text" name="author" class="form-control bg-body-tertiary text-body-tertiary" value="<%= addbook.author %>" readonly>
+          </div>
+
+          <div class="col-12">
+            <label for="year" class="form-label text">Publish Year:</label>
+            <input type="text" name="year" class="form-control bg-body-tertiary text-body-tertiary" value="<%= addbook.year %>" readonly>
+          </div>
+
+          <div class="col-12">
+            <label for="rating" class="form-label text">Rating:</label>
+            <input type="text" name="rating" class="form-control bg-body-tertiary text-body-tertiary" value="<%= addbook.rating %>" readonly>
+          </div>
+
+          <div class="col-12">
+            <label for="user" class="form-label text">User:</label>
+            <input type="text" name="user" class="form-control" id="lastName" placeholder="who goes there?..." required="">
+          </div>
+
+        </div>
+
+        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add to Read</button>
+      </form>
+  </div>
+  <% }else{ %>
+
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/images/saly.svg" class="d-block mx-lg-auto img-fluid" alt="Get out while you can....before the matrix crashes" width="300" height="150" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Something Went Wrong.....Youre not supposed to be here....Find your way out!!!!!!!!</h1>
+          </div>
+        </div>
+      </div>
+
+    <% } %>
+
+
+    
+<%- include('partials/footer.ejs') %>

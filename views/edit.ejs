@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+
+<h3>Edit placeholder</h3>
+
+<div class="px-4 py-5 my-5 container">
+
+  <% if(locals.note){ %>
+    <form action="/edit" method="post">
+          <div class="col-12">
+            <input type="hidden" name="noteId" value="<%= note.id %>">
+            <div class="col-12">
+              <label for="updatedNote" class="form-label">Note:</label>
+              <textarea name="updatedNote" class="d-block" id=""><%= note.note %></textarea>
+            </div>
+            <div class="col-12">
+              <label for="user" class="form-label">User:</label>
+              <input type="text" name="user" class="form-control" id="lastName" value="<%= note.fake_user %>" required="">
+            </div>
+          </div>
+        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add to Read</button>
+      </form>
+  <% }else{ %>
+
+    <form action="/edit" method="post">
+          <div class="col-12">
+            <% if(locals.bookId){ %>
+            <input type="hidden" name="bookId" value="<%= bookId %>">
+            <% } %>
+            <div class="col-12">
+              <label for="newNote" class="form-label">Note:</label>
+              <textarea name="newNote" id="" placeholder="write note here" class="d-block"></textarea>
+            </div>
+            <div class="col-12">
+              <label for="user" class="form-label">User:</label>
+              <input type="text" name="user" class="form-control" id="lastName" placeholder="Jean doe" required="">
+            </div>
+          </div>
+
+        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add to Read</button>
+      </form>
+      <% } %>
+      
+</div>
+    
+<%- include('partials/footer.ejs') %>

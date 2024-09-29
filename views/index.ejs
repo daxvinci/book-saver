@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+
+    
+    <form action="/add" method="get" class="container my-3">
+        <input type="submit" class="btn btn-primary" value="Add book">
+    </form>
+
+    <div class="front-page">
+      <div class="illustrations">
+        <img class="lady" src="/images/lady.svg" alt="lady">
+        <img class="robot" src="/images/robot.svg" alt="robot">
+      </div>
+    </div>
+
+    <% if(locals.savedBooks){ %>
+    <div class="container">
+        <div class="row g-3">
+          <% for(let i = 0; i < savedBooks.length ; i++){ %>
+          <div class="col-md-6">
+            <div class="row cards g-0 border-none rounded overflow-hidden flex-md-row-reverse mb-4 shadow h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <form action="/edit" method="get">
+                  <input type="hidden" name="id" value="<%= savedBooks[i].id %>">
+                  <input type="hidden" name="isbn" value="<%= savedBooks[i].isbn %>">
+                <h3 class="mb-0"><%= savedBooks[i].book %></h3>
+                <strong class="d-inline-block mb-2 text-primary-emphasis">Author: <%= savedBooks[i].author %></strong>
+                <div class="mb-1 text-body-secondary">Published: <%= savedBooks[i].publish_year %></div>
+                <p class="card-text mb-auto">Rating: <%= savedBooks[i].rating %></p>
+                <p class="card-text mb-auto">Note by: <%= savedBooks[i].fake_user %></p>
+                <input type="submit" class="btn btn-primary my-2" value="See notes">
+              </form>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= savedBooks[i].isbn %>-M.jpg" width="200" height="250" alt="image not available">
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <% } %>
+
+
+    
+<%- include('partials/footer.ejs') %>
