@@ -3,13 +3,14 @@ import bodyParser from "body-parser";
 import pg from 'pg';
 import axios from "axios";
 import dotenv from "dotenv";
+import { dirname} from "path";
+import { fileURLToPath } from "url";
 
 
 dotenv.config()
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = 3000;
 const app = express()
-
-
 
 const { Pool } = pg;
 
@@ -30,7 +31,7 @@ pool.connect((err) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 let books = [];
 // let username;
