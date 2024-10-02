@@ -10,11 +10,11 @@
             <input type="hidden" name="noteId" value="<%= note.id %>">
             <div class="col-12">
               <label for="updatedNote" class="form-label text">Note:</label>
-              <textarea class="form-control" name="updatedNote" id="updatedNote" rows="3"><%= note.note %></textarea>
+              <textarea class="form-control bg-secondary" name="updatedNote" id="updatedNote" rows="3"><%= note.note %></textarea>
             </div>
             <div class="col-12">
               <label for="user" class="form-label text">User:</label>
-              <input type="text" name="user" class="form-control" id="lastName" value="<%= note.fake_user %>" required="">
+              <input type="text" name="user" class="form-control bg-secondary" id="lastName" value="<%= note.fake_user %>" required="">
             </div>
           </div>
         <button class="w-30 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
@@ -32,11 +32,11 @@
             <% } %>
             <div class="col-12">
               <label for="newNote" class="form-label">Note:</label>
-              <textarea class="form-control" name="newNote" placeholder="write note here" id="newNote" rows="3"></textarea>
+              <textarea class="form-control bg-secondary" name="newNote" placeholder="write note here" id="newNote" rows="3"></textarea>
             </div>
             <div class="col-12">
               <label for="user" class="form-label">User:</label>
-              <input type="text" name="user" class="form-control" id="lastName" placeholder="Jean doe" required="">
+              <input type="text" name="user" class="form-control bg-secondary" id="lastName" placeholder="Jean doe" required="">
             </div>
           </div>
 
