@@ -5,7 +5,6 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { dirname} from "path";
 import { fileURLToPath } from "url";
-import { Console } from "console";
 
 
 dotenv.config()
@@ -13,12 +12,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = process.env.PORT || 3000;
 const app = express()
 
+
 const { Pool } = pg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 //   ssl: {
-//     rejectUnauthorized: false // necessary for connecting to Render apparently
+//     rejectUnauthorized: false // necessary for connecting to Render apparently...sike gpt lied
 //   }
 })
 
@@ -37,8 +37,9 @@ pool.connect((err) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
-let books = [];
-// let username;
+let currentUser;
+
+
 
 app.get('/', async (req,res)=>{
     try{
