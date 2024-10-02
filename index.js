@@ -16,6 +16,9 @@ const { Pool } = pg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false // necessary for connecting to Render apparently
+  }
 })
 
 pool.connect((err) => {
