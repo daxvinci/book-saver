@@ -140,16 +140,16 @@ app.post('/edit', async (req, res) => {
 
         if (result.rows.length > 0) {
             // Note exists, update it
-            const valuesBack = await pool.query("UPDATE notes SET note = $1 WHERE id = $2 RETURNING *", [data.updatedNote, data.noteId]);
-            const updateUser = await pool.query("UPDATE read_books SET fake_user = $1 WHERE id = $2 RETURNING *", [data.user, result.rows[0].book_id]);
-            console.log(valuesBack);
-            console.log(updateUser);
+            await pool.query("UPDATE notes SET note = $1 WHERE id = $2 RETURNING *", [data.updatedNote, data.noteId]);
+            await pool.query("UPDATE read_books SET fake_user = $1 WHERE id = $2 RETURNING *", [data.user, result.rows[0].book_id]);
+            // console.log(valuesBack);
+            // console.log(updateUser);
         } else {
             // Note does not exist, insert new note
-            const valuesBack = await pool.query("INSERT INTO notes(note, book_id) VALUES($1, $2) RETURNING *", [data.newNote, data.bookId]);
-            const newUser = await pool.query("UPDATE read_books SET fake_user = $1 WHERE id = $2 RETURNING *", [data.user, data.bookId]);
-            console.log(valuesBack);
-            console.log(newUser);
+            await pool.query("INSERT INTO notes(note, book_id) VALUES($1, $2) RETURNING *", [data.newNote, data.bookId]);
+            await pool.query("UPDATE read_books SET fake_user = $1 WHERE id = $2 RETURNING *", [data.user, data.bookId]);
+            // console.log(valuesBack);
+            // console.log(newUser);
         }
         
         res.redirect('/');
