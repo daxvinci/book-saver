@@ -10,7 +10,7 @@
             <input type="hidden" name="noteId" value="<%= note.id %>">
             <div class="col-12">
               <label for="updatedNote" class="form-label">Note:</label>
-              <textarea name="updatedNote" class="d-block" id=""><%= note.note %></textarea>
+              <textarea class="form-control" name="updatedNote" id="updatedNote" rows="3"><%= note.note %></textarea>
             </div>
             <div class="col-12">
               <label for="user" class="form-label">User:</label>
@@ -32,7 +32,7 @@
             <% } %>
             <div class="col-12">
               <label for="newNote" class="form-label">Note:</label>
-              <textarea name="newNote" id="" placeholder="write note here" class="d-block"></textarea>
+              <textarea class="form-control" name="newNote" placeholder="write note here" id="newNote" rows="3"></textarea>
             </div>
             <div class="col-12">
               <label for="user" class="form-label">User:</label>
