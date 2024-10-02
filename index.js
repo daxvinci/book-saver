@@ -99,7 +99,7 @@ app.post('/add', async (req,res)=>{
 app.get('/form', (req,res)=>{
     const details = req.query
     res.render('form.ejs',{
-        addBook:details,
+        addbook:details,
     })
 })
 
