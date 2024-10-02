@@ -17,8 +17,8 @@
         <div class="row g-3">
           <% for(let i = 0; i < savedBooks.length ; i++){ %>
           <div class="col-md-6">
-            <div class="row cards col-8 g-0 border-none rounded overflow-hidden flex-md-row-reverse mb-4 shadow h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
+            <div class="row cards g-0 border-none rounded overflow-hidden flex-md-row-reverse mb-4 shadow h-md-250 position-relative">
+              <div class="col-8 p-4 d-flex flex-column position-static">
                 <form action="/edit" method="get">
                   <input type="hidden" name="id" value="<%= savedBooks[i].id %>">
                   <input type="hidden" name="isbn" value="<%= savedBooks[i].isbn %>">
