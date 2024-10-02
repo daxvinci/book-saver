@@ -41,14 +41,14 @@ app.get('/', async (req,res)=>{
         const result = await pool.query("SELECT * FROM read_books")
         books = result.rows
         res.render('index.ejs',{
-            savepoolooks:books
+            savedbooks:books
         })
     }
     catch(error){
         console.log(error)
         books = []
         res.render('index.ejs',{
-            savepoolooks:books
+            savedbooks:books
         })
     }
     
@@ -96,7 +96,7 @@ app.post('/add', async (req,res)=>{
 app.get('/form', (req,res)=>{
     const details = req.query
     res.render('form.ejs',{
-        adpoolook:details,
+        addbook:details,
     })
 })
 
