@@ -1,6 +1,6 @@
 <%- include('partials/header.ejs') %>
 
-<h3>Edit placeholder</h3>
+<h3 class="text">Write your notes here</h3>
 
 <div class="px-4 py-5 my-5 container">
 
@@ -9,19 +9,19 @@
           <div class="col-12">
             <input type="hidden" name="noteId" value="<%= note.id %>">
             <div class="col-12">
-              <label for="updatedNote" class="form-label">Note:</label>
+              <label for="updatedNote" class="form-label text">Note:</label>
               <textarea class="form-control" name="updatedNote" id="updatedNote" rows="3"><%= note.note %></textarea>
             </div>
             <div class="col-12">
-              <label for="user" class="form-label">User:</label>
+              <label for="user" class="form-label text">User:</label>
               <input type="text" name="user" class="form-control" id="lastName" value="<%= note.fake_user %>" required="">
             </div>
           </div>
-        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
+        <button class="w-30 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
       </form>
       <form action="/delete" method="post">
             <input type="hidden" name="noteId" value="<%= note.id %>">
-        <button class="w-100 btn btn-danger btn-lg mt-4" type="submit">Delete</button>
+        <button class="w-30 btn btn-danger btn-lg mt-4" type="submit">Delete</button>
       </form>
   <% }else{ %>
 
@@ -40,11 +40,11 @@
             </div>
           </div>
 
-        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
+        <button class="w-30 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
       </form>
       <form action="/delete" method="post">
             <input type="hidden" name="noteId" value="<%= bookId %>">
-        <button class="w-100 btn btn-danger btn-lg mt-4" type="submit">Delete</button>
+        <button class="w-30 btn btn-danger btn-lg mt-4" type="submit">Delete</button>
       </form>
       <% } %>
       
