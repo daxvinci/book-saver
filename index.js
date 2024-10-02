@@ -9,13 +9,13 @@ import { fileURLToPath } from "url";
 
 dotenv.config()
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express()
 
 const { Pool } = pg;
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  connectionString: process.env.DATABASE_URL,
 })
 
 pool.connect((err) => {
