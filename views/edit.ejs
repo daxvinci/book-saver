@@ -43,7 +43,7 @@
         <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
       </form>
       <form action="/delete" method="post">
-            <input type="hidden" name="noteId" value="<%= note.id %>">
+            <input type="hidden" name="noteId" value="<%= bookId %>">
         <button class="w-100 btn btn-danger btn-lg mt-4" type="submit">Delete</button>
       </form>
       <% } %>
