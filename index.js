@@ -162,6 +162,13 @@ app.post('/edit', async (req, res) => {
 app.post('/delete', async (req, res) => {
     const data = req.body
     try {  
+//         ALTER TABLE notes
+// DROP CONSTRAINT notes_book_id_fkey;
+
+// ALTER TABLE notes
+// ADD CONSTRAINT notes_book_id_fkey
+// FOREIGN KEY (book_id) REFERENCES read_books(id) ON DELETE CASCADE;   these are for next time so i dont have to put two querys as below
+
         await pool.query("DELETE FROM notes WHERE book_id = $1",[data.noteId])
         await pool.query("DELETE FROM read_books WHERE id = $1",[data.noteId])
         console.log("deleted")
