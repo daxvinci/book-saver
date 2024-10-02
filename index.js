@@ -161,7 +161,8 @@ app.post('/edit', async (req, res) => {
 })
 app.post('/delete', async (req, res) => {
     const data = req.body
-    try {
+    try {  
+        await pool.query("DELETE FROM notes WHERE book_id = $1",[data.noteId])
         await pool.query("DELETE FROM read_books WHERE id = $1",[data.noteId])
         console.log("deleted")
         res.redirect('/')
