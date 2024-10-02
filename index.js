@@ -5,6 +5,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { dirname} from "path";
 import { fileURLToPath } from "url";
+import { Console } from "console";
 
 
 dotenv.config()
@@ -153,6 +154,17 @@ app.post('/edit', async (req, res) => {
         }
         
         res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Something went wrong');
+    }
+})
+app.post('/delete', async (req, res) => {
+    const data = req.body
+    try {
+        await pool.query("DELETE FROM read_books WHERE id = $1",[data.noteId])
+        console.log("deleted")
+        res.redirect('/')
     } catch (error) {
         console.error(error);
         res.status(500).send('Something went wrong');

@@ -19,6 +19,10 @@
           </div>
         <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
       </form>
+      <form action="/delete" method="post">
+            <input type="hidden" name="noteId" value="<%= note.id %>">
+        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Delete</button>
+      </form>
   <% }else{ %>
 
     <form action="/edit" method="post">
@@ -37,6 +41,10 @@
           </div>
 
         <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Add Note</button>
+      </form>
+      <form action="/delete" method="post">
+            <input type="hidden" name="noteId" value="<%= note.id %>">
+        <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Delete</button>
       </form>
       <% } %>
       
