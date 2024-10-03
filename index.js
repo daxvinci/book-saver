@@ -11,15 +11,16 @@ dotenv.config()
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = process.env.PORT || 3000;
 const app = express()
+let books =[]
 
 
 const { Pool } = pg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false // necessary for connecting to Render apparently...sike gpt lied
-  }
+//   ssl: {
+//     rejectUnauthorized: false // necessary for connecting to Render apparently...sike gpt lied
+//   }
 })
 
 pool.connect((err) => {
@@ -38,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // let currentUser;
-let books = []
+// let books = []
 
 
 app.get('/', async (req,res)=>{
