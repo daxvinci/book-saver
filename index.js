@@ -11,7 +11,7 @@ dotenv.config()
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = process.env.PORT || 3000;
 const app = express()
-let books =[]
+// let books =[]
 
 
 const { Pool } = pg;
@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // let currentUser;
-// let books = []
+let books = []
 
 
 app.get('/', async (req,res)=>{
